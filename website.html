@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kampala Threads | Authentic African Fashion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">Item added to cart!</div>
+
+<!-- ══ NAVIGATION ══ -->
+<nav>
+    <div class="logo" onclick="showPage('home')">Kampala<span>Threads</span></div>
+    <ul class="nav-links">
+        <li><a href="#home" id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
+        <li><a href="#shop" id="nav-shop" onclick="showPage('shop')">Shop</a></li>
+        <li><a href="#sitemap" id="nav-sitemap" onclick="showPage('sitemap')">Site Map</a></li>
+        <li><a href="#about" id="nav-about" onclick="showPage('about')">About Us</a></li>
+        <li><a href="#contact" id="nav-contact" class="nav-cta" onclick="showPage('contact')">Contact</a></li>
+    </ul>
+    <a href="#" class="cart-link" onclick="viewCart()">
+        <span class="cart-count" id="cart-count">0</span>
+        &#128722; Cart
+    </a>
+</nav>
+
+<!-- ══════════════════════════════
+     HOME PAGE
+══════════════════════════════ -->
+<div class="page active" id="home">
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">&#127482;&#127468; Made in Uganda</div>
+            <h1>Wear the <em>Heart</em><br>of Africa</h1>
+            <p>Discover authentic Ugandan fashion — bold kitenge prints, elegant gomesi, and contemporary African streetwear. Crafted by local artisans, delivered to your door.</p>
+            <div class="hero-btns">
+                <button class="btn-primary" onclick="showPage('shop')">Shop Collection</button>
+                <button class="btn-outline" onclick="showPage('about')">Our Story</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats strip -->
+    <div class="stats-strip">
+        <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Products</div></div>
+        <div class="stat"><div class="stat-num">2,000+</div><div class="stat-label">Happy Customers</div></div>
+        <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Local Artisans</div></div>
+        <div class="stat"><div class="stat-num">5 &#9733;</div><div class="stat-label">Average Rating</div></div>
+    </div>
+
+    <!-- Featured products -->
+    <section class="featured-section">
+        <div class="featured-header">
+            <div>
+                <div class="section-label">New Arrivals</div>
+                <h2 class="section-title">Featured Collection</h2>
+                <p class="section-sub">Our most loved pieces, handpicked from Uganda's finest artisans.</p>
+            </div>
+            <button class="view-all-btn" onclick="showPage('shop')">View All &rarr;</button>
+        </div>
+        <div class="products-grid" id="featured-products"></div>
+    </section>
+
+    <!-- Why us -->
+    <section class="why-section">
+        <div style="text-align:center;">
+            <div class="section-label">Why Choose Us</div>
+            <h2 class="section-title">The Kampala Threads Difference</h2>
+        </div>
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-icon">&#129525;</div>
+                <div class="why-title">Artisan Crafted</div>
+                <p class="why-text">Every piece is handmade by skilled Ugandan tailors and weavers using traditional techniques passed down through generations.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#128666;</div>
+                <div class="why-title">Nationwide Delivery</div>
+                <p class="why-text">We deliver across Uganda — Kampala, Entebbe, Jinja, Mbarara and more. Orders processed within 24 hours.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#127758;</div>
+                <div class="why-title">100% African Fabric</div>
+                <p class="why-text">We use genuine African fabrics — kitenge, kente, and bark cloth — ethically sourced from local Ugandan markets.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-icon">&#8617;&#65039;</div>
+                <div class="why-title">Easy Returns</div>
+                <p class="why-text">Not satisfied? We offer a simple 7-day return policy. Customer satisfaction is always our highest priority.</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ══════════════════════════════
+     SHOP PAGE
+══════════════════════════════ -->
+<div class="page" id="shop">
+    <div class="shop-header">
+        <h1>Our Collection</h1>
+        <p>Browse authentic Ugandan fashion for all occasions</p>
+    </div>
+    <div class="category-filters">
+        <button class="filter-btn active" onclick="filterProducts('all', this)">All Items</button>
+        <button class="filter-btn" onclick="filterProducts('women', this)">Women</button>
+        <button class="filter-btn" onclick="filterProducts('men', this)">Men</button>
+        <button class="filter-btn" onclick="filterProducts('kids', this)">Kids</button>
+        <button class="filter-btn" onclick="filterProducts('traditional', this)">Traditional</button>
+        <button class="filter-btn" onclick="filterProducts('modern', this)">Modern</button>
+    </div>
+    <div class="shop-grid-section">
+        <div class="products-grid" id="shop-products"></div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════
+     SITE MAP PAGE
+══════════════════════════════ -->
+<div class="page" id="sitemap">
+    <div class="shop-header">
+        <h1>Site Map</h1>
+        <p>A visual overview of all pages and content on Kampala Threads</p>
+    </div>
+    <section class="sitemap-section">
+        <div class="section-label">Navigation Structure</div>
+        <h2 class="section-title">Website Architecture</h2>
+        <p class="section-sub">Each node represents a page or section accessible from the navigation menu or through internal links.</p>
+
+        <div class="sitemap-wrap">
+            <!-- Root -->
+            <div class="sm-root">&#127968; Kampala Threads</div>
+            <div class="sm-line"></div>
+            <div class="sm-hline"></div>
+
+            <!-- Branch row -->
+            <div class="sm-branch-row">
+
+                <!-- Home -->
+                <div class="sm-branch">
+                    <div class="sm-node">&#127968; Home</div>
+                    <div class="sm-leaf-row">
+                        <div class="sm-line"></div>
+                        <div class="sm-leaf">Hero Banner</div>
+                        <div class="sm-leaf">Stats Strip</div>
+                        <div class="sm-leaf">Featured Products</div>
+                        <div class="sm-leaf">Why Choose Us</div>
+                    </div>
+                </div>
+
+                <!-- Shop -->
+                <div class="sm-branch">
+                    <div class="sm-node">&#128722; Shop</div>
+                    <div class="sm-leaf-row">
+                        <div class="sm-line"></div>
+                        <div class="sm-leaf">Category Filters</div>
+                        <div class="sm-leaf">Women's Wear</div>
+                        <div class="sm-leaf">Men's Wear</div>
+                        <div class="sm-leaf">Kids' Fashion</div>
+                        <div class="sm-leaf">Traditional Wear</div>
+                    </div>
+                </div>
+
+                <!-- Site Map -->
+                <div class="sm-branch">
+                    <div class="sm-node">&#128207; Site Map</div>
+                    <div class="sm-leaf-row">
+                        <div class="sm-line"></div>
+                        <div class="sm-leaf">Architecture Diagram</div>
+                        <div class="sm-leaf">Page Descriptions</div>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="sm-branch">
+                    <div class="sm-node">&#9829; About Us</div>
+                    <div class="sm-leaf-row">
+                        <div class="sm-line"></div>
+                        <div class="sm-leaf">Our Story</div>
+                        <div class="sm-leaf">Core Values</div>
+                        <div class="sm-leaf">Meet the Team</div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="sm-branch">
+                    <div class="sm-node">&#128222; Contact</div>
+                    <div class="sm-leaf-row">
+                        <div class="sm-line"></div>
+                        <div class="sm-leaf">Address &amp; Location</div>
+                        <div class="sm-leaf">Phone &amp; Email</div>
+                        <div class="sm-leaf">Contact Form</div>
+                        <div class="sm-leaf">Working Hours</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Page descriptions table -->
+        <div style="margin-top: 4rem;">
+            <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--dark); margin-bottom:1.5rem;">Page Descriptions</h3>
+            <table style="width:100%; border-collapse:collapse; background:white; border-radius:8px; overflow:hidden; box-shadow: 0 2px 12px rgba(28,12,4,0.06);">
+                <thead>
+                    <tr style="background:var(--dark); color:#FFF8F0;">
+                        <th style="padding:1rem; text-align:left; font-size:0.85rem; letter-spacing:0.5px;">Page</th>
+                        <th style="padding:1rem; text-align:left; font-size:0.85rem; letter-spacing:0.5px;">URL / Link</th>
+                        <th style="padding:1rem; text-align:left; font-size:0.85rem; letter-spacing:0.5px;">Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">Home</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#home</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Landing page — introduces Kampala Threads, shows featured products and key selling points.</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border); background:var(--light);">
+                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">Shop</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#shop</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Full product catalogue with category filter. Customers browse and add to cart.</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border);">
+                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">Site Map</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#sitemap</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Visual architecture showing all pages and their sub-sections for easy navigation.</td>
+                    </tr>
+                    <tr style="border-bottom:1px solid var(--border); background:var(--light);">
+                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">About Us</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#about</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Company background, values, and team — builds trust with potential customers.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">Contact</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#contact</td>
+                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Physical address, phone, email, working hours, and an enquiry form.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</div>
+
+<!-- ══════════════════════════════
+     ABOUT PAGE
+══════════════════════════════ -->
+<div class="page" id="about">
+    <div class="about-hero">
+        <div class="about-hero-text">
+            <div class="section-label" style="color:var(--gold);">Our Story</div>
+            <h1>Born in Kampala,<br>Worn Across Africa</h1>
+            <p>Kampala Threads was founded in 2021 by a group of passionate Ugandan fashion designers who believed that African fashion deserved a modern, digital home.</p>
+            <p>What started as a small boutique in Nakasero Market has grown into Uganda's leading online fashion platform — connecting local tailors with customers across the country and beyond.</p>
+            <p>Our mission is simple: celebrate African craftsmanship, support local artisans, and make authentic Ugandan fashion accessible to everyone.</p>
+        </div>
+        <div class="about-img-box">&#129525;</div>
+    </div>
+
+    <section class="values-section">
+        <div style="text-align:center;">
+            <div class="section-label">What We Stand For</div>
+            <h2 class="section-title">Our Core Values</h2>
+        </div>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>&#127942; Quality First</h3>
+                <p>Every garment undergoes strict quality checks before it reaches you. We partner only with skilled artisans who take pride in their craft.</p>
+            </div>
+            <div class="value-card">
+                <h3>&#129309; Community Driven</h3>
+                <p>We are committed to uplifting Ugandan artisans, designers, and fabric traders. Every purchase supports a local family and their livelihood.</p>
+            </div>
+            <div class="value-card">
+                <h3>&#127807; Sustainable Fashion</h3>
+                <p>We champion eco-friendly production methods, using natural dyes and fabrics that are kind to Uganda's beautiful natural environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div style="text-align:center;">
+            <div class="section-label">The Team</div>
+            <h2 class="section-title">Meet Our Founders</h2>
+            <p class="section-sub" style="margin:0 auto 0;">A diverse team of Ugandan creatives, technologists, and fashion enthusiasts united by one vision.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">&#128100;</div>
+                <div class="team-name">Nakato Aisha</div>
+                <div class="team-role">Creative Director</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">&#128100;</div>
+                <div class="team-name">Ssemakula David</div>
+                <div class="team-role">Technology Lead</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">&#128100;</div>
+                <div class="team-name">Nambogo Grace</div>
+                <div class="team-role">Head of Design</div>
+            </div>
+            <div class="team-card">
+                <div class="team-avatar">&#128100;</div>
+                <div class="team-name">Kato Brian</div>
+                <div class="team-role">Operations Manager</div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- ══════════════════════════════
+     CONTACT PAGE
+══════════════════════════════ -->
+<div class="page" id="contact">
+    <div class="contact-header">
+        <h1>Get In Touch</h1>
+        <p>We'd love to hear from you — questions, orders, or partnerships welcome.</p>
+    </div>
+    <div class="contact-layout">
+        <div class="contact-info">
+            <h2>Contact Details</h2>
+            <div class="contact-detail">
+                <div class="ci-icon">&#128205;</div>
+                <div class="ci-text">
+                    <h4>Our Address</h4>
+                    <p>Plot 14, Nakasero Road<br>Kampala, Uganda</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="ci-icon">&#128222;</div>
+                <div class="ci-text">
+                    <h4>Phone Numbers</h4>
+                    <p>+256 701 234 567<br>+256 772 890 123</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="ci-icon">&#128140;</div>
+                <div class="ci-text">
+                    <h4>Email Addresses</h4>
+                    <p>info@kampalathreads.ug<br>orders@kampalathreads.ug</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="ci-icon">&#128336;</div>
+                <div class="ci-text">
+                    <h4>Working Hours</h4>
+                    <p>Monday – Friday: 8:00 AM – 6:00 PM<br>Saturday: 9:00 AM – 4:00 PM</p>
+                </div>
+            </div>
+            <div class="contact-detail">
+                <div class="ci-icon">&#127988;</div>
+                <div class="ci-text">
+                    <h4>Social Media</h4>
+                    <p>@KampalaThreads on Instagram,<br>Facebook &amp; X (Twitter)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-card">
+            <h2>Send Us a Message</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" placeholder="e.g. Aisha">
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" placeholder="e.g. Nakato">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" placeholder="you@example.com">
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+256 7XX XXX XXX">
+            </div>
+            <div class="form-group">
+                <label>Subject</label>
+                <select>
+                    <option>General Enquiry</option>
+                    <option>Order Support</option>
+                    <option>Partnership / Wholesale</option>
+                    <option>Returns &amp; Refunds</option>
+                    <option>Custom Orders</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Your Message</label>
+                <textarea placeholder="Write your message here..."></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitForm()">Send Message &#9993;</button>
+        </div>
+    </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <span class="footer-brand-logo">Kampala<span>Threads</span></span>
+            <p>Uganda's premier destination for authentic African fashion. Supporting local artisans and celebrating African culture, one outfit at a time.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('shop')">Shop</a></li>
+                <li><a onclick="showPage('sitemap')">Site Map</a></li>
+                <li><a onclick="showPage('about')">About Us</a></li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Categories</h4>
+            <ul>
+                <li><a onclick="showPage('shop'); filterProducts('women', null)">Women's Wear</a></li>
+                <li><a onclick="showPage('shop'); filterProducts('men', null)">Men's Wear</a></li>
+                <li><a onclick="showPage('shop'); filterProducts('kids', null)">Kids</a></li>
+                <li><a onclick="showPage('shop'); filterProducts('traditional', null)">Traditional Wear</a></li>
+                <li><a onclick="showPage('shop'); filterProducts('modern', null)">Modern Styles</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+                <li><a onclick="showPage('contact')">Customer Service</a></li>
+                <li><a href="#">Shipping Policy</a></li>
+                <li><a href="#">Returns Policy</a></li>
+                <li><a href="#">Size Guide</a></li>
+                <li><a href="#">FAQs</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>&copy; 2026 Kampala Threads. All rights reserved.</span>
+        <span>Plot 14, Nakasero Road, Kampala, Uganda &nbsp;|&nbsp; +256 701 234 567</span>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
