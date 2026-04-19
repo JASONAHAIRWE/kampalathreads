@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover authentic Ugandan fashion — bold kitenge prints, elegant gomesi, and contemporary African streetwear. Crafted by local artisans.">
     <title>Kampala Threads | Authentic African Fashion</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
 <!-- Toast notification -->
 <div class="toast" id="toast">Item added to cart!</div>
 
+<!-- Cart Modal -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<div class="cart-modal" id="cart-modal">
+    <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="close-cart" id="close-cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items-container">
+        <!-- Cart items injected here -->
+    </div>
+    <div class="cart-footer">
+        <div class="cart-total">Total: <span id="cart-total-price">UGX 0</span></div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+</div>
+
 <!-- ══ NAVIGATION ══ -->
 <nav>
-    <div class="logo" onclick="showPage('home')">Kampala<span>Threads</span></div>
+    <a href="#home" class="logo">Kampala<span>Threads</span></a>
     <ul class="nav-links">
-        <li><a href="#home" id="nav-home" class="active" onclick="showPage('home')">Home</a></li>
-        <li><a href="#shop" id="nav-shop" onclick="showPage('shop')">Shop</a></li>
-        <li><a href="#sitemap" id="nav-sitemap" onclick="showPage('sitemap')">Site Map</a></li>
-        <li><a href="#about" id="nav-about" onclick="showPage('about')">About Us</a></li>
-        <li><a href="#contact" id="nav-contact" class="nav-cta" onclick="showPage('contact')">Contact</a></li>
+        <li><a href="#home" id="nav-home" class="active">Home</a></li>
+        <li><a href="#shop" id="nav-shop">Shop</a></li>
+        <li><a href="#about" id="nav-about">About Us</a></li>
+        <li><a href="#contact" id="nav-contact" class="nav-cta">Contact</a></li>
     </ul>
-    <a href="#" class="cart-link" onclick="viewCart()">
+    <a href="#" class="cart-link" id="cart-btn">
         <span class="cart-count" id="cart-count">0</span>
         &#128722; Cart
     </a>
@@ -40,8 +56,8 @@
             <h1>Wear the <em>Heart</em><br>of Africa</h1>
             <p>Discover authentic Ugandan fashion — bold kitenge prints, elegant gomesi, and contemporary African streetwear. Crafted by local artisans, delivered to your door.</p>
             <div class="hero-btns">
-                <button class="btn-primary" onclick="showPage('shop')">Shop Collection</button>
-                <button class="btn-outline" onclick="showPage('about')">Our Story</button>
+                <a href="#shop" class="btn-primary" style="text-decoration: none; display: inline-block;">Shop Collection</a>
+                <a href="#about" class="btn-outline" style="text-decoration: none; display: inline-block;">Our Story</a>
             </div>
         </div>
     </section>
@@ -62,7 +78,7 @@
                 <h2 class="section-title">Featured Collection</h2>
                 <p class="section-sub">Our most loved pieces, handpicked from Uganda's finest artisans.</p>
             </div>
-            <button class="view-all-btn" onclick="showPage('shop')">View All &rarr;</button>
+            <a href="#shop" class="view-all-btn" style="text-decoration: none;">View All &rarr;</a>
         </div>
         <div class="products-grid" id="featured-products"></div>
     </section>
@@ -107,142 +123,16 @@
         <p>Browse authentic Ugandan fashion for all occasions</p>
     </div>
     <div class="category-filters">
-        <button class="filter-btn active" onclick="filterProducts('all', this)">All Items</button>
-        <button class="filter-btn" onclick="filterProducts('women', this)">Women</button>
-        <button class="filter-btn" onclick="filterProducts('men', this)">Men</button>
-        <button class="filter-btn" onclick="filterProducts('kids', this)">Kids</button>
-        <button class="filter-btn" onclick="filterProducts('traditional', this)">Traditional</button>
-        <button class="filter-btn" onclick="filterProducts('modern', this)">Modern</button>
+        <button class="filter-btn active" data-filter="all">All Items</button>
+        <button class="filter-btn" data-filter="women">Women</button>
+        <button class="filter-btn" data-filter="men">Men</button>
+        <button class="filter-btn" data-filter="kids">Kids</button>
+        <button class="filter-btn" data-filter="traditional">Traditional</button>
+        <button class="filter-btn" data-filter="modern">Modern</button>
     </div>
     <div class="shop-grid-section">
         <div class="products-grid" id="shop-products"></div>
     </div>
-</div>
-
-<!-- ══════════════════════════════
-     SITE MAP PAGE
-══════════════════════════════ -->
-<div class="page" id="sitemap">
-    <div class="shop-header">
-        <h1>Site Map</h1>
-        <p>A visual overview of all pages and content on Kampala Threads</p>
-    </div>
-    <section class="sitemap-section">
-        <div class="section-label">Navigation Structure</div>
-        <h2 class="section-title">Website Architecture</h2>
-        <p class="section-sub">Each node represents a page or section accessible from the navigation menu or through internal links.</p>
-
-        <div class="sitemap-wrap">
-            <!-- Root -->
-            <div class="sm-root">&#127968; Kampala Threads</div>
-            <div class="sm-line"></div>
-            <div class="sm-hline"></div>
-
-            <!-- Branch row -->
-            <div class="sm-branch-row">
-
-                <!-- Home -->
-                <div class="sm-branch">
-                    <div class="sm-node">&#127968; Home</div>
-                    <div class="sm-leaf-row">
-                        <div class="sm-line"></div>
-                        <div class="sm-leaf">Hero Banner</div>
-                        <div class="sm-leaf">Stats Strip</div>
-                        <div class="sm-leaf">Featured Products</div>
-                        <div class="sm-leaf">Why Choose Us</div>
-                    </div>
-                </div>
-
-                <!-- Shop -->
-                <div class="sm-branch">
-                    <div class="sm-node">&#128722; Shop</div>
-                    <div class="sm-leaf-row">
-                        <div class="sm-line"></div>
-                        <div class="sm-leaf">Category Filters</div>
-                        <div class="sm-leaf">Women's Wear</div>
-                        <div class="sm-leaf">Men's Wear</div>
-                        <div class="sm-leaf">Kids' Fashion</div>
-                        <div class="sm-leaf">Traditional Wear</div>
-                    </div>
-                </div>
-
-                <!-- Site Map -->
-                <div class="sm-branch">
-                    <div class="sm-node">&#128207; Site Map</div>
-                    <div class="sm-leaf-row">
-                        <div class="sm-line"></div>
-                        <div class="sm-leaf">Architecture Diagram</div>
-                        <div class="sm-leaf">Page Descriptions</div>
-                    </div>
-                </div>
-
-                <!-- About -->
-                <div class="sm-branch">
-                    <div class="sm-node">&#9829; About Us</div>
-                    <div class="sm-leaf-row">
-                        <div class="sm-line"></div>
-                        <div class="sm-leaf">Our Story</div>
-                        <div class="sm-leaf">Core Values</div>
-                        <div class="sm-leaf">Meet the Team</div>
-                    </div>
-                </div>
-
-                <!-- Contact -->
-                <div class="sm-branch">
-                    <div class="sm-node">&#128222; Contact</div>
-                    <div class="sm-leaf-row">
-                        <div class="sm-line"></div>
-                        <div class="sm-leaf">Address &amp; Location</div>
-                        <div class="sm-leaf">Phone &amp; Email</div>
-                        <div class="sm-leaf">Contact Form</div>
-                        <div class="sm-leaf">Working Hours</div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Page descriptions table -->
-        <div style="margin-top: 4rem;">
-            <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--dark); margin-bottom:1.5rem;">Page Descriptions</h3>
-            <table style="width:100%; border-collapse:collapse; background:white; border-radius:8px; overflow:hidden; box-shadow: 0 2px 12px rgba(28,12,4,0.06);">
-                <thead>
-                    <tr style="background:var(--dark); color:#FFF8F0;">
-                        <th style="padding:1rem; text-align:left; font-size:0.85rem; letter-spacing:0.5px;">Page</th>
-                        <th style="padding:1rem; text-align:left; font-size:0.85rem; letter-spacing:0.5px;">URL / Link</th>
-                        <th style="padding:1rem; text-align:left; font-size:0.85rem; letter-spacing:0.5px;">Purpose</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom:1px solid var(--border);">
-                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">Home</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#home</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Landing page — introduces Kampala Threads, shows featured products and key selling points.</td>
-                    </tr>
-                    <tr style="border-bottom:1px solid var(--border); background:var(--light);">
-                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">Shop</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#shop</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Full product catalogue with category filter. Customers browse and add to cart.</td>
-                    </tr>
-                    <tr style="border-bottom:1px solid var(--border);">
-                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">Site Map</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#sitemap</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Visual architecture showing all pages and their sub-sections for easy navigation.</td>
-                    </tr>
-                    <tr style="border-bottom:1px solid var(--border); background:var(--light);">
-                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">About Us</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#about</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Company background, values, and team — builds trust with potential customers.</td>
-                    </tr>
-                    <tr>
-                        <td style="padding:0.9rem 1rem; font-weight:700; color:var(--dark);">Contact</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">#contact</td>
-                        <td style="padding:0.9rem 1rem; color:var(--muted); font-size:0.88rem;">Physical address, phone, email, working hours, and an enquiry form.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
 </div>
 
 <!-- ══════════════════════════════
@@ -360,29 +250,29 @@
             </div>
         </div>
 
-        <div class="contact-form-card">
+        <div class="contact-form-card" id="contact-form">
             <h2>Send Us a Message</h2>
             <div class="form-row">
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" placeholder="e.g. Aisha">
+                    <input type="text" id="contact-fname" placeholder="e.g. Aisha">
                 </div>
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" placeholder="e.g. Nakato">
+                    <input type="text" id="contact-lname" placeholder="e.g. Nakato">
                 </div>
             </div>
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" placeholder="you@example.com">
+                <input type="email" id="contact-email" placeholder="you@example.com">
             </div>
             <div class="form-group">
                 <label>Phone Number</label>
-                <input type="tel" placeholder="+256 7XX XXX XXX">
+                <input type="tel" id="contact-phone" placeholder="+256 7XX XXX XXX">
             </div>
             <div class="form-group">
                 <label>Subject</label>
-                <select>
+                <select id="contact-subject">
                     <option>General Enquiry</option>
                     <option>Order Support</option>
                     <option>Partnership / Wholesale</option>
@@ -393,9 +283,9 @@
             </div>
             <div class="form-group">
                 <label>Your Message</label>
-                <textarea placeholder="Write your message here..."></textarea>
+                <textarea id="contact-message" placeholder="Write your message here..."></textarea>
             </div>
-            <button class="submit-btn" onclick="submitForm()">Send Message &#9993;</button>
+            <button class="submit-btn" id="submit-contact">Send Message &#9993;</button>
         </div>
     </div>
 </div>
@@ -410,31 +300,30 @@
         <div class="footer-col">
             <h4>Quick Links</h4>
             <ul>
-                <li><a onclick="showPage('home')">Home</a></li>
-                <li><a onclick="showPage('shop')">Shop</a></li>
-                <li><a onclick="showPage('sitemap')">Site Map</a></li>
-                <li><a onclick="showPage('about')">About Us</a></li>
-                <li><a onclick="showPage('contact')">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>Categories</h4>
             <ul>
-                <li><a onclick="showPage('shop'); filterProducts('women', null)">Women's Wear</a></li>
-                <li><a onclick="showPage('shop'); filterProducts('men', null)">Men's Wear</a></li>
-                <li><a onclick="showPage('shop'); filterProducts('kids', null)">Kids</a></li>
-                <li><a onclick="showPage('shop'); filterProducts('traditional', null)">Traditional Wear</a></li>
-                <li><a onclick="showPage('shop'); filterProducts('modern', null)">Modern Styles</a></li>
+                <li><a href="#shop" class="footer-filter-link" data-filter="women">Women's Wear</a></li>
+                <li><a href="#shop" class="footer-filter-link" data-filter="men">Men's Wear</a></li>
+                <li><a href="#shop" class="footer-filter-link" data-filter="kids">Kids</a></li>
+                <li><a href="#shop" class="footer-filter-link" data-filter="traditional">Traditional Wear</a></li>
+                <li><a href="#shop" class="footer-filter-link" data-filter="modern">Modern Styles</a></li>
             </ul>
         </div>
         <div class="footer-col">
             <h4>Support</h4>
             <ul>
-                <li><a onclick="showPage('contact')">Customer Service</a></li>
-                <li><a href="#">Shipping Policy</a></li>
-                <li><a href="#">Returns Policy</a></li>
-                <li><a href="#">Size Guide</a></li>
-                <li><a href="#">FAQs</a></li>
+                <li><a href="#contact">Customer Service</a></li>
+                <li><a href="#" class="coming-soon">Shipping Policy</a></li>
+                <li><a href="#" class="coming-soon">Returns Policy</a></li>
+                <li><a href="#" class="coming-soon">Size Guide</a></li>
+                <li><a href="#" class="coming-soon">FAQs</a></li>
             </ul>
         </div>
     </div>
