@@ -13,7 +13,7 @@ const products = [
 function productHTML(p) {
     const tagStr = p.tags.join(',');
     const badgeHTML = p.badge ? `<span class="product-badge">${p.badge}</span>` : '';
-    // Use picsum.photos for images to ensure they load properly
+
     return `
         <div class="product-card" data-tags="${tagStr}">
             <div class="product-img" style="background:${p.bg};">
